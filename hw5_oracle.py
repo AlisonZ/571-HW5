@@ -22,24 +22,24 @@ def get_inputs():
 def get_transition(right_token, left_token, buffer):
     r_head = right_token.get_head_index()
     r_index = right_token.get_index()
-    r_pos = right_token.get_upos()
+    r_dep_rel = right_token.get_dep_rel()
     l_head = left_token.get_head_index()
     l_index = left_token.get_index()
-    l_pos = left_token.get_upos()
+    l_dep_rel = left_token.get_dep_rel()
 
     if r_head == l_index:
         has_dependents_in_buffer = any(
             token.get_head_index() == r_index for token in buffer
         )
         if not has_dependents_in_buffer:
-            return (TRANSITIONS['rightArc'], r_pos)
+            return (TRANSITIONS['rightArc'], r_dep_rel)
 
     if l_head == r_index:
         has_dependents_in_buffer = any(
             token.get_head_index() == l_index for token in buffer
         )
         if not has_dependents_in_buffer:
-            return (TRANSITIONS['leftArc'], l_pos)
+            return (TRANSITIONS['leftArc'], l_dep_rel)
 
     return (TRANSITIONS['shift'])
 
@@ -47,13 +47,16 @@ def print_sequence(o, sequence_output):
     transitions = o.get_transitions()
     with open(sequence_output, "a") as f:
         for transition in transitions:
-            print(transition, file=f)
+            if isinstance(transition, tuple):
+                print(f"({transition[0]}, {transition[1]})", file=f)
+            else:
+                print(transition, file=f)
         print('', file=f)
 
 def create_transitions(o, sequence_output):
     is_terminal_case = o.is_terminal_case()
     if is_terminal_case:
-        o.add_transition((TRANSITIONS['rightArc'], 'ROOT'))
+        o.add_transition((TRANSITIONS['rightArc'], 'root'))
         print_sequence(o, sequence_output)
         return 
     while not is_terminal_case:
@@ -81,14 +84,14 @@ def create_transitions(o, sequence_output):
         else:
             is_terminal_case = o.is_terminal_case()
             if is_terminal_case:
-                o.add_transition((TRANSITIONS['rightArc'], 'ROOT'))
+                o.add_transition((TRANSITIONS['rightArc'], 'root'))
                 print_sequence(o, sequence_output)
                 return
             else:
                 o.shift()
                 o.add_transition(transition=TRANSITIONS['shift'])
 
-    o.add_transition((TRANSITIONS['rightArc'], 'ROOT'))
+    o.add_transition((TRANSITIONS['rightArc'], 'root'))
     print_sequence(o, sequence_output)
 
 def create_oracle(parsed_phrase, sequence_output):
