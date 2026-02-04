@@ -1,0 +1,46 @@
+# newdoc id = n01001
+# sent_id = n01001011
+# text = Aunque no haya precedentes para la mayor parte de la transición digital en Estados Unidos, la transición de poder pacífica es habitual, escribió el lunes en una entrada de blog Kori Schulman, Asistente Especial del presidente Obama.
+# text_en = “While much of the digital transition is unprecedented in the United States, the peaceful transition of power is not,” Obama special assistant Kori Schulman wrote in a blog post Monday.
+1	Aunque	aunque	SCONJ	IN	_	3	mark	_	_
+2	no	no	ADV	RB	Polarity=Neg	3	advmod	_	_
+3	haya	haber	VERB	VBC	Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	23	advcl	_	_
+4	precedentes	precedente	NOUN	NN	Gender=Masc|Number=Plur	3	obj	_	_
+5	para	para	ADP	IN	_	8	case	_	_
+6	la	el	DET	DT	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	8	det	_	_
+7	mayor	mayor	ADJ	JJR	Degree=Cmp|Gender=Fem|Number=Sing	8	amod	_	_
+8	parte	parte	NOUN	NN	Gender=Fem|Number=Sing	3	obl	_	_
+9	de	de	ADP	IN	_	11	case	_	_
+10	la	el	DET	DT	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	11	det	_	_
+11	transición	transición	NOUN	NN	Gender=Fem|Number=Sing	8	nmod	_	_
+12	digital	digital	ADJ	JJ	Gender=Fem|Number=Sing	11	amod	_	_
+13	en	en	ADP	IN	_	14	case	_	_
+14	Estados	estado	NOUN	NN	Gender=Masc|Number=Plur	3	obl	_	Proper=True
+15	Unidos	unido	ADJ	JJ	Gender=Masc|Number=Plur	14	amod	_	SpaceAfter=No|Proper=True
+16	,	,	PUNCT	,	PunctType=Comm	3	punct	_	_
+17	la	el	DET	DT	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	18	det	_	_
+18	transición	transición	NOUN	NN	Gender=Fem|Number=Sing	23	nsubj	_	_
+19	de	de	ADP	IN	_	20	case	_	_
+20	poder	poder	NOUN	NN	Gender=Masc|Number=Sing	18	nmod	_	_
+21	pacífica	pacífico	ADJ	JJ	Gender=Fem|Number=Sing	18	amod	_	_
+22	es	ser	AUX	VBC	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	23	cop	_	_
+23	habitual	habitual	ADJ	JJ	Gender=Fem|Number=Sing	0	root	_	SpaceAfter=No
+24	,	,	PUNCT	,	PunctType=Comm	25	punct	_	_
+25	escribió	escribir	VERB	VBC	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin	23	parataxis	_	_
+26	el	el	DET	DT	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	27	det	_	_
+27	lunes	lunes	NOUN	NN	Gender=Masc|Number=Sing	25	obl:tmod	_	_
+28	en	en	ADP	IN	_	30	case	_	_
+29	una	uno	DET	DT	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art	30	det	_	_
+30	entrada	entrada	NOUN	NN	Gender=Fem|Number=Sing	25	obl	_	_
+31	de	de	ADP	IN	_	32	case	_	_
+32	blog	blog	NOUN	NN	Gender=Masc|Number=Sing	30	nmod	_	_
+33	Kori	Kori	PROPN	NNP	Gender=Fem|Number=Sing	25	nsubj	_	_
+34	Schulman	Schulman	PROPN	NNP	Gender=Fem|Number=Sing	33	flat:name	_	SpaceAfter=No
+35	,	,	PUNCT	,	PunctType=Comm	36	punct	_	_
+36	Asistente	asistente	NOUN	NN	Gender=Fem|Number=Sing	33	appos	_	_
+37	Especial	especial	ADJ	JJ	Gender=Fem|Number=Sing	36	amod	_	_
+38	de	de	ADP	INDT	_	40	case	_	_
+39	el	el	DET	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	40	det	_	_
+40	presidente	presidente	NOUN	NN	Gender=Masc|Number=Sing	36	nmod	_	_
+41	Obama	Obama	PROPN	NNP	Gender=Masc|Number=Sing	40	appos	_	SpaceAfter=No
+42	.	.	PUNCT	.	PunctType=Peri	23	punct	_	_
