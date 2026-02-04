@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 hw5_oracle.py $1 $2 $3
+python3 hw5_oracle.py $1 $2

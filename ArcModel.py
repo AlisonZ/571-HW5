@@ -3,7 +3,7 @@ class Arc:
         self.head_index = 0
         self.index = 0
         self.dep_relation = ''
-        self.word = ''
+        self.form = ''
     
     def set_head_index(self, index):
         self.head_index = index
@@ -14,8 +14,8 @@ class Arc:
     def set_dep_relation(self, relation):
         self.dep_relation = relation
 
-    def set_word(self, word):
-        self.word = word
+    def set_form(self, form):
+        self.form = form
     
     def get_dep_relation(self):
         return self.dep_relation
@@ -26,6 +26,6 @@ class Arc:
     def get_index(self):
         return self.index
     
-    def get_word(self):
-        return self.word
+    def get_form(self):
+        return self.form
     
