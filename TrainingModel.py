@@ -47,31 +47,32 @@ class TrainingModel:
     def get_sequence(self):
         return self.sequence
     
-    def create_transition(self, left, right, transition):
-        if transition == TRANSITIONS['SHIFT']:
-            features = {'stack_0': left.get_lemma(), 'stack_0_POS': left.get_upos()}
-            data = (features, transition)
-            self.training_data.append(data)
-        else:
-            features = {'stack_0': left.get_lemma(), 'stack_0_POS': left.get_upos(), 'stack_1': right.get_lemma(), 'stack_1_POS': right.get_upos()}
-            data = (features, transition)
-            self.training_data.append(data)
+    def extract_features(self):
+        features = {}
+        if len(self.stack) >=1:
+            stack_0 = self.stack[-1]
+            features['stack_0'] = stack_0.get_lemma()
+            features['stack_0_POS'] = stack_0.get_upos()
+
+        if len(self.stack) >=2:
+            stack_1 = self.stack[-2]
+            features['stack_1'] = stack_1.get_lemma()
+            features['stack_1_POS'] = stack_1.get_upos()
+
+        return features
     
     def shift(self):
-        top_item = self.buffer.pop()
-        self.create_transition(left=top_item, right='', transition=TRANSITIONS['SHIFT'])
+        top_item = self.buffer.pop(0)
         self.stack.append(top_item)
 
     def leftarc(self):
         left = self.stack.pop()
         right = self.stack.pop()
-        self.create_transition(left, right, TRANSITIONS['LEFTARC'])
         self.stack.append(right)
 
     def rightarc(self):
         left = self.stack.pop()
         right = self.stack.pop()
-        self.create_transition(left, right, TRANSITIONS['RIGHTARC'])
         self.stack.append(left)
     
     def perform_transition(self, transition):
@@ -83,3 +84,5 @@ class TrainingModel:
             elif transition[0] == TRANSITIONS['RIGHTARC']:
                 self.rightarc()
                 
+            else:
+                print("ERROR: unknown transition")

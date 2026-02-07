@@ -52,8 +52,9 @@ def get_phrase(train_data):
     
 def create_training_data(t):
     sequences = t.get_sequence()
-    # create training tuple from the stack and add to t.set_training_data()
     for s in sequences:
+        features = t.extract_features()
+        t.training_data.append((features, s))
         t.perform_transition(s)
 
 def initialize_training_data(phrase, seq):
