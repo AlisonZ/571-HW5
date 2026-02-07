@@ -100,5 +100,5 @@ class Token:
         print("**************")
         print(f"INDEX {self.index}")
         print(f"HEAD {self.head_index}")
-        print(f"WORD {self.word}")
-        print(F"POS {self.pos}")
+        print(f"LEMMA {self.lemma}")
+        print(F"UPOS {self.upos}")

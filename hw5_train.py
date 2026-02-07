@@ -2,6 +2,7 @@
 import sys
 import os
 from TrainingModel import TrainingModel
+from Token import Token
 
 def get_inputs():
     if len(sys.argv) > 1:
@@ -38,21 +39,38 @@ def get_phrase(train_data):
         lines = file.readlines()
         phrase = []
         for line in lines:
-            phrase.append(line.strip())
+            # Do not add Meta data to the phrase 
+            if line[0] != "#":
+                # print(f"!***!!!!! {line}")
+                token = Token()
+                token.create_token(line.strip())
+                phrase.append(token)
             if line == "\n":
                 if phrase:
                     return phrase
         return phrase
+    
+def create_training_data(t):
+    sequences = t.get_sequence()
+    # create training tuple from the stack and add to t.set_training_data()
+    for s in sequences:
+        t.perform_transition(s)
 
-def create_training_data(phrase, test_labels):
-
+def initialize_training_data(phrase, seq):
     t = TrainingModel()
+    root = Token()
+    root.create_token("0\tROOT\tROOT\tROOT\t_\t_\t0\troot\t_\t_")
+    t.set_buffer(phrase)
+    t.set_stack(root)
+    t.set_sequence(seq)
+    return t
 
 def main():
     train_data, test_data, test_labels, train_seq, pred_seq = get_inputs()
     phrase, seq = get_phrase_and_seq(train_data, train_seq)
-    print(f"!!! {phrase}")
-    create_training_data(phrase, train_seq)
+    # print(f"!!! {phrase}")
+    t = initialize_training_data(phrase, seq)
+    create_training_data(t)
 
 if __name__ == '__main__':
     main()
